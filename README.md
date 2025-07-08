@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Mikala Franks (Scrum Master): [GitHub] https://github.com/mikalafranks / [LinkedIn] https://www.linkedin.com/in/mikala-franks-8b21b52a3/
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Khushali Parekh: [GitHub](https://github.com/Khush413) / [LinkedIn](https://www.linkedin.com/in/khushali-parekh/)
 
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
