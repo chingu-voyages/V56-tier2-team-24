@@ -36,6 +36,6 @@ coding!
 
 - Mikala Franks (Scrum Master): https://github.com/mikalafranks / https://www.linkedin.com/in/mikala-franks-8b21b52a3/
 - Khushali Parekh: [GitHub](https://github.com/Khush413) / [LinkedIn](https://www.linkedin.com/in/khushali-parekh/)
-
+- Vartika Patel [GitHub](https://github.com/vartika99) / [LinkedIn](https://www.linkedin.com/in/vartikapatel/)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
