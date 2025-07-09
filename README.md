@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Mikala Franks (Scrum Master): https://github.com/mikalafranks / https://www.linkedin.com/in/mikala-franks-8b21b52a3/
-- Khushali Parekh: [GitHub](https://github.com/Khush413) / [LinkedIn](https://www.linkedin.com/in/khushali-parekh/)
+- Khushali Parekh (UX/UI Designer): [GitHub](https://github.com/Khush413) / [LinkedIn](https://www.linkedin.com/in/khushali-parekh/)
 - Vartika Patel (UX/UI Designer): [GitHub](https://github.com/vartika99) / [LinkedIn](https://www.linkedin.com/in/vartikapatel/)
 - Christine Kim (Web Developer) [Github](https://github.com/cfkim) / [LinkedIn](https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav)
 - Wanying Liu (Web Developer) [GitHub](https://github.com/TheClaireLiu) / [LinkedIn](https://www.linkedin.com/in/wanying--liu/)
