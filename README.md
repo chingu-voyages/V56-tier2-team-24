@@ -37,6 +37,7 @@ coding!
 - Mikala Franks (Scrum Master): [GitHub](https://github.com/mikalafranks) / [LinkedIn](https://www.linkedin.com/in/mikala-franks-8b21b52a3/)
 - Khushali Parekh (UX/UI Designer): [GitHub](https://github.com/Khush413) / [LinkedIn](https://www.linkedin.com/in/khushali-parekh/)
 - Vartika Patel (UX/UI Designer): [GitHub](https://github.com/vartika99) / [LinkedIn](https://www.linkedin.com/in/vartikapatel/)
+- Rel Guzman (Web Developer) [Github](https://github.com/rgap) / [LinkedIn](https://www.linkedin.com/in/relguzman/)
 - Christine Kim (Web Developer) [Github](https://github.com/cfkim) / [LinkedIn](https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav)
 - Wanying Liu (Web Developer) [GitHub](https://github.com/TheClaireLiu) / [LinkedIn](https://www.linkedin.com/in/wanying--liu/)
 - Hyun Woo Kim (Web Developer) [GitHub](https://github.com/hynwkm) / [LinkedIn](https://www.linkedin.com/in/hyunwoo-kim/)
