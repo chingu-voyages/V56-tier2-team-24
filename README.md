@@ -35,6 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Mikala Franks (Scrum Master): [GitHub](https://github.com/mikalafranks) / [LinkedIn](https://www.linkedin.com/in/mikala-franks-8b21b52a3/)
+- Viral Barot (Product Owner): [LinkedIn](https://www.linkedin.com/in/viral-barot-mba/)
 - Khushali Parekh (UX/UI Designer): [GitHub](https://github.com/Khush413) / [LinkedIn](https://www.linkedin.com/in/khushali-parekh/)
 - Vartika Patel (UX/UI Designer): [GitHub](https://github.com/vartika99) / [LinkedIn](https://www.linkedin.com/in/vartikapatel/)
 - Rel Guzman (Web Developer) [Github](https://github.com/rgap) / [LinkedIn](https://www.linkedin.com/in/relguzman/)
