@@ -3,7 +3,7 @@ export default function Footer() {
     <div className="w-full bg-[#697077] text-white">
       <div
         id="footer-content"
-        className="flex flex-col h-full justify-between items-center p-15 text-[14px]"
+        className="flex flex-col h-full justify-between items-center p-15 font-nunito text-[14px]"
       >
         <div
           id="footer-information"
