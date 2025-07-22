@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="w-full bg-[#ECECEC] flex flex-row py-40 px-40 gap-40">
         <div className="w-1/2 h-full flex flex-col justify-center">
           <div id="hero-text" className="flex flex-col justify-center">
-            <h1 className="text-[70px] font-[1000] mb-20">
+            <h1 className="text-[70px] font-[900] mb-20">
               Track Surgery Patient Status in Real-Time
             </h1>
             <div className="text-xl/9 mb-10">
