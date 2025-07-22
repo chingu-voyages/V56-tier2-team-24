@@ -1,14 +1,27 @@
-@font-face {
-  font-family: Nunito;
-  src: url("../src/assets/fonts/Nunito-Regular.ttf");
-}
-@font-face {
-  font-family: Nunito-bold;
-  src: url("../src/assets/fonts/Nunito-Bold.ttf");
-}
 @import "tailwindcss";
 
+@font-face {
+    font-family: Nunito;
+    src: url("../src/assets/fonts/Nunito-Regular.ttf");
+}
+
+@font-face {
+    font-family: Nunito-bold;
+    src: url("../src/assets/fonts/Nunito-Bold.ttf");
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("../src/assets/fonts/Roboto-Variable.ttf");
+}
+
 @theme {
-  --font-nunito: Nunito, "sans-serif";
-  --font-nunito-bold: Nunito-bold, "sans-serif";
+    --font-nunito: Nunito, "sans-serif";
+    --font-nunito-bold: Nunito-bold, "sans-serif";
+    --font-roboto: Roboto, "sans-serif";
+
+    --color-background: #F2F4F8;
+    --color-bg-text: #555555;
+    --color-text: #8C92AC/90;
+    --color-primary: #3E98D0;
 }

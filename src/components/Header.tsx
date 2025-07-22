@@ -6,20 +6,20 @@ export default function Header() {
     const date = useMemo(() => new Date(), []);
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
 
-        const currentDate = date.toLocaleDateString(undefined, {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-        });
+    const currentDate = date.toLocaleDateString(undefined, {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
 
     return (
-        <header className="bg-background text-bg-text h-20 flex align-center px-4">
+        <header className="font-roboto bg-background text-bg-text h-20 flex align-center px-10 md:px-16">
             <nav className="w-full max-w-7xl mx-auto flex items-center justify-between">
                 <Link to="/" className="text-xl font-semibold">
                     Lumo
                 </Link>
                 {isLoggedIn && (
-                    <ul className="flex gap-4 text-text font-bold h-full items-center">
+                    <ul className="flex gap-2 text-text font-bold h-full items-center">
                         <HeaderLinks to="/" label="Home" />
                         <HeaderLinks to="/info" label="Patient Information" />
                         <HeaderLinks
