@@ -2,8 +2,13 @@
   font-family: Nunito;
   src: url("../src/assets/fonts/Nunito-Regular.ttf");
 }
+@font-face {
+  font-family: Nunito-bold;
+  src: url("../src/assets/fonts/Nunito-Bold.ttf");
+}
 @import "tailwindcss";
 
 @theme {
   --font-nunito: Nunito, "sans-serif";
+  --font-nunito-bold: Nunito-bold, "sans-serif";
 }
