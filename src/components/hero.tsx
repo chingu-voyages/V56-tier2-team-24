@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <>
-      <div className="w-full h-screen bg-[#ECECEC] flex flex-row justify-between px-40 gap-4">
+      <div className="w-full bg-[#ECECEC] flex flex-row py-40 px-40 gap-40">
         <div className="w-1/2 h-full flex flex-col justify-center">
           <div id="hero-text" className="flex flex-col justify-center">
             <h1 className="text-[70px] font-[1000] mb-20">
