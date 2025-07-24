@@ -30,11 +30,12 @@ export default function Login() {
 
               <p>Forgot Password?</p>
             </div>
-            <button className="bg-[#555555] text-white rounded-[12px] py-[13px] w-full mb-7">
+            <button className="bg-[#555555] text-white rounded-[12px] py-[13px] w-full mb-75">
               Login
             </button>
           </form>
-          <div className="flex w-full flex-row gap-3 mb-25">
+          {/* Commenting out since no longer doing OAuth Google and Apple */}
+          {/* <div className="flex w-full flex-row gap-3 mb-25">
             <button className="border outline-[1.5px] border-[#929292] text-[#929292] rounded-[12px] py-[3px] w-full flex flex-row justify-center items-center gap-3 text-sm">
               <img
                 src="./public/static/images/google.png"
@@ -51,7 +52,7 @@ export default function Login() {
               />
               <p>Login with Apple</p>
             </button>
-          </div>
+          </div> */}
           <hr className="border-[#DDE1E6] w-full mb-10" />
           <div className="w-full flex">
             <p>No account yet? Sign Up</p>
