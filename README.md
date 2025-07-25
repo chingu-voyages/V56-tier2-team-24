@@ -35,6 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Mikala Franks (Scrum Master): [GitHub](https://github.com/mikalafranks) / [LinkedIn](https://www.linkedin.com/in/mikala-franks-8b21b52a3/)
+- Omowumi Adekunle (Scrum Master Shadow): [GitHub](https://github.com/Ay23Ade) / [LinkedIn]( https://www.linkedin.com/in/omowumi-adekunle?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_appv)
 - Viral Barot (Product Owner): [LinkedIn](https://www.linkedin.com/in/viral-barot-mba/)
 - Khushali Parekh (UX/UI Designer): [GitHub](https://github.com/Khush413) / [LinkedIn](https://www.linkedin.com/in/khushali-parekh/)
 - Vartika Patel (UX/UI Designer): [GitHub](https://github.com/vartika99) / [LinkedIn](https://www.linkedin.com/in/vartikapatel/)
