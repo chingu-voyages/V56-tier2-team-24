@@ -1,23 +1,15 @@
 import API from "../config/apiClient";
 import queryClient from "../config/queryClient";
-// import type { LoginResponse } from "../types/LoginResponse";
+import type { LoginResponse, SignInData } from "../types/LoginResponse";
 import { navigate } from "./navigation";
-
-// Sign in data
-interface signInData {
-  email: string;
-  password: string;
-  rememberMe: Boolean;
-}
+import { storage } from "../constants/storage";
 
 // -- FUNCTIONS FOR MAKING API REQUESTS --
-// export const login = async (data: signInData): Promise<LoginResponse> =>
-//   API.post("/auth/login", data);
-export const login = async (data: signInData) => API.post("/auth/login", data);
+export const login = async (data: SignInData): Promise<LoginResponse> => 
+  API.post("/auth/login", data);
 
 export const getUser = async () => {
-
-  const token = localStorage.getItem("accessToken") || localStorage.getItem("token");
+  const token = storage.get('ACCESS_TOKEN');
 
   const response = await API("/user", {
     headers: {
@@ -25,15 +17,11 @@ export const getUser = async () => {
     },
   });
 
-  console.log("API endpoint");
-  console.log(response);
-
   return response;
 };
 
 export const logout = async () => {
-  console.log("logout clicked");
-  const token = localStorage.getItem("refreshToken");
+  const token = storage.get('REFRESH_TOKEN');
   const res = await API.get("/auth/logout", {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -41,8 +29,8 @@ export const logout = async () => {
   });
 
   // Ends session by removing tokens from browser
-  localStorage.removeItem("accessToken");
-  localStorage.removeItem("refreshToken");
+  storage.remove('ACCESS_TOKEN');
+  storage.remove('REFRESH_TOKEN');
 
   // Redirects user to login page
   navigate("/login", { state: { redirectUrl: window.location.pathname } });

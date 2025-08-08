@@ -29,18 +29,17 @@ export default function Login({
 
     onSuccess: (response) => {
       // Saves tokens to storage
-      console.log(response);
-      window.localStorage.setItem("accessToken", response.data.accessToken);
+      window.localStorage.setItem("accessToken", response.accessToken);
 
       // Only saves refresh token if rememberMe checked
       if (rememberMe) {
-        window.localStorage.setItem("refreshToken", response.data.refreshToken);
+        window.localStorage.setItem("refreshToken", response.refreshToken);
       }
 
       // Sets App's logged in state and the role of the user
       setIsLoggedIn(true);
-      setUser(response.data.user);
-      setRole(response.data.user.role);
+      setUser(response.user);
+      setRole(response.user.role);
       navigate("/", { replace: true });
     },
   });

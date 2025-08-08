@@ -26,6 +26,6 @@ app.use("/password", passwordRoutes);
 app.use("/user", authenticate, userRoutes);
 
 app.listen(PORT, async () => { 
-  await connectToDatabase();
+  // await connectToDatabase(); // Temporarily commented out database connection
   console.log(`Server is running on port ${PORT}`); 
 });

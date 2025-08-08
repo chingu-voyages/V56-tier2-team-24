@@ -3,13 +3,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import loginImg from "/static/images/login.svg";
 import apiService from "../services/api";
+import { validateEmailFormat } from "../utils/validation";
 
 export default function ForgotPassword() {
-  const today = new Date().toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
+
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -18,10 +15,10 @@ export default function ForgotPassword() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address');
+    // Email validation
+    const emailValidation = validateEmailFormat(email);
+    if (!emailValidation.isValid) {
+      setError(emailValidation.error || 'Please enter a valid email address');
       return;
     }
     
@@ -62,7 +59,6 @@ export default function ForgotPassword() {
 
   return (
     <div className="flex-1 flex flex-col bg-white">
-      {/* Main content */}
 
       {/* Main content */}
       <div className="flex flex-1 items-center justify-center px-4 py-4 min-h-0">
