@@ -7,7 +7,7 @@ import { navigate } from "./navigation";
 interface signInData {
   email: string;
   password: string;
-  rememberMe: boolean;
+  rememberMe: Boolean;
 }
 
 // -- FUNCTIONS FOR MAKING API REQUESTS --
@@ -16,8 +16,8 @@ interface signInData {
 export const login = async (data: signInData) => API.post("/auth/login", data);
 
 export const getUser = async () => {
-  const token =
-    localStorage.getItem("accessToken") || localStorage.getItem("token");
+
+  const token = localStorage.getItem("accessToken") || localStorage.getItem("token");
 
   const response = await API("/user", {
     headers: {
@@ -51,9 +51,10 @@ export const logout = async () => {
   return res;
 };
 
+
 // gets all patients
 export const getPatients = async () => {
-  console.log("Getting patients");
+  console.log("Getting patients")
   const token = localStorage.getItem("accessToken");
   const res = await API.get("/patient/all", {
     headers: {
@@ -61,31 +62,27 @@ export const getPatients = async () => {
     },
   });
   return res;
-};
+}
 
 // for forgot password
 // sends email to forgot password endpoint
-export const forgotPassword = async (email: string) => {
-  const response = API.post("/auth/password/forgot", { email });
+export const forgotPassword = async(email: string) => {
+  const response = API.post('/auth/password/forgot', {email});
 
-  return response;
-};
+  return response
+}
 
 // resets the password with new password
-export const resetPassword = async (
-  code: string,
-  uid: string,
-  password: string,
-) => {
-  const response = API.post("/auth/password/reset", { code, uid, password });
+export const resetPassword = async(code: string, uid: string, password: string) => {
+  const response = API.post('/auth/password/reset', {code, uid, password});
 
   return response;
-};
+}
 
 // sends token to verify
 export const verifyResetToken = async (code: string, uid: string) => {
   console.log(code, uid);
-  const response = API.post("/auth/password/verify", { code, uid });
-  console.log(response);
+  const response = API.post('/auth/password/verify', {code, uid});
+  console.log(response)
   return response;
-};
+}
