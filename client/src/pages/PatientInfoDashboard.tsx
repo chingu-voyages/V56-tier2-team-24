@@ -1,4 +1,8 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import Search from "../components/Search";
+import API from "../config/apiClient";
+import { getPatients } from "../lib/api";
 import type { Role } from "../types/Role";
 
 interface PatientInfoDashboardProps {
@@ -25,6 +29,35 @@ export default function PatientInfoDashboard({
     // Redirect to login page if not admin or surgeon
     return <Navigate to="/login" replace />;
   }
+
+  const [patients, setPatients] = useState([]);
+
+  const deletePatient = async (patientID: string) => {
+    console.log("deleting user attempt: " + patientID);
+    const token = localStorage.getItem("accessToken");
+
+    try {
+      await API.delete("/patient/delete", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: { id: patientID },
+      });
+      setPatients((prev) => prev.filter((p) => p.patientID !== patientID));
+    } catch {
+      console.log("error deleting patient");
+    }
+  };
+
+  useEffect(() => {
+    const fetchPatients = async () => {
+      const result = await getPatients();
+      const patients = result.data.patients;
+      setPatients(patients);
+    };
+
+    fetchPatients();
+  }, []);
 
   return (
     <section className="flex min-h-0 flex-1 flex-col px-4 py-8 md:px-8">
