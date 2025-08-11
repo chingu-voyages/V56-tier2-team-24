@@ -9,7 +9,7 @@ import Account from "./pages/Account";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import PatientInfoDashboard from "./pages/PatientInfoDashboard";
+import PatientInfo from "./pages/PatientInfo";
 import ResetLinkSent from "./pages/ResetLinkSent";
 import ResetPassword from "./pages/ResetPassword";
 import ResetPasswordSuccess from "./pages/ResetPasswordSuccess";
@@ -85,10 +85,8 @@ function App() {
           />
           <Route path="/user" element={<Account user={user} />} />
           <Route
-            path="/patient-info-dashboard"
-            element={
-              <PatientInfoDashboard isLoggedIn={isLoggedIn} role={role} />
-            }
+            path="/patient-info"
+            element={<PatientInfo isLoggedIn={isLoggedIn} role={role} />}
           />
           <Route path="/password/forgot" element={<ForgotPassword />} />
           <Route path="/password/reset-link-sent" element={<ResetLinkSent />} />

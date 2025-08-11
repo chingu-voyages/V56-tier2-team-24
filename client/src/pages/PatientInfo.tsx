@@ -1,21 +1,22 @@
+import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Search from "../components/Search";
 import API from "../config/apiClient";
 import { getPatients } from "../lib/api";
 import type { Patient } from "../types/Patient";
 import type { Role } from "../types/Role";
 
-interface PatientInfoDashboardProps {
+interface PatientInfoProps {
   role: Role | undefined;
   isLoggedIn: boolean;
 }
 
-export default function PatientInfoDashboard({
-  role,
-  isLoggedIn,
-}: PatientInfoDashboardProps) {
+export default function PatientInfo({ role, isLoggedIn }: PatientInfoProps) {
   const [patients, setPatients] = useState<Patient[]>([]);
+  const [selectedStatus, setSelectedStatus] = useState<
+    "All" | "Before" | "During" | "After"
+  >("All");
 
   useEffect(() => {
     const fetchPatients = async () => {
@@ -80,26 +81,58 @@ export default function PatientInfoDashboard({
 
         <div className="flex items-end">
           <button className="bg-primary text-background inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-xl px-8 py-5 whitespace-nowrap">
-            Authorization Login
+            Add a New Patient
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
               viewBox="0 -960 960 960"
               width="24px"
-              fill="currentColor"
+              fill="#FFFFFF"
             >
-              <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+              <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
             </svg>
           </button>
         </div>
       </div>
 
-      <div className="mb-4 flex flex-row justify-between">
+      <div className="mb-4 flex flex-row items-center justify-between">
         <div className="flex flex-row gap-8">
-          <button className="">All</button>
-          <button>Before Procedure</button>
-          <button>During Procedure</button>
-          <button>After Procedure</button>
+          <button
+            className={clsx(
+              "h-12 rounded-2xl px-10",
+              selectedStatus === "All" && "outline-primary outline-2",
+            )}
+            onClick={() => setSelectedStatus("All")}
+          >
+            All
+          </button>
+          <button
+            className={clsx(
+              "h-12 rounded-2xl px-4",
+              selectedStatus === "Before" && "outline-primary outline-2",
+            )}
+            onClick={() => setSelectedStatus("Before")}
+          >
+            Before Procedure
+          </button>
+          <button
+            className={clsx(
+              "h-12 rounded-2xl px-4",
+              selectedStatus === "During" && "outline-primary outline-2",
+            )}
+            onClick={() => setSelectedStatus("During")}
+          >
+            During Procedure
+          </button>
+          <button
+            className={clsx(
+              "h-12 rounded-2xl px-4",
+              selectedStatus === "After" && "outline-primary outline-2",
+            )}
+            onClick={() => setSelectedStatus("After")}
+          >
+            After Procedure
+          </button>
         </div>
         <Search />
       </div>
