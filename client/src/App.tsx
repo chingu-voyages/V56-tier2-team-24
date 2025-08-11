@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { getUser } from "./lib/api";
 import { setNavigate } from "./lib/navigation";
@@ -9,6 +9,7 @@ import Account from "./pages/Account";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import PatientInfo from "./pages/PatientInfo";
 import ResetLinkSent from "./pages/ResetLinkSent";
 import ResetPassword from "./pages/ResetPassword";
 import ResetPasswordSuccess from "./pages/ResetPasswordSuccess";
@@ -22,6 +23,7 @@ function App() {
   const [role, setRole] = useState<Role | undefined>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
+  const [isLoading, setIsLoading] = useState<boolean>(true); // Add loading state
 
   const navigate = useNavigate();
   setNavigate(navigate);
@@ -31,7 +33,7 @@ function App() {
 
     // Skip authentication check for password reset pages
     const currentPath = window.location.pathname;
-    if (currentPath.startsWith('/password/')) {
+    if (currentPath.startsWith("/password/")) {
       setIsLoggedIn(false);
       return;
     }
@@ -45,6 +47,8 @@ function App() {
       } catch (err) {
         console.log("auth failed to fetch data: ", err);
         setIsLoggedIn(false);
+      } finally {
+        setIsLoading(false); // Set loading to false when done
       }
     };
 
@@ -52,14 +56,14 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header
         role={role}
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
         setUser={setUser}
       />
-      <main>
+      <main className="flex flex-1 flex-col">
         <Routes>
           <Route
             path="/"
@@ -84,16 +88,22 @@ function App() {
           />
           <Route path="/user" element={<Account user={user} />} />
           <Route path="/status" element={<PatientStatus />} />
-          <Route path="/info" element={<PatientInfo />} />
+          <Route
+            path="/patient-info"
+            element={<PatientInfo isLoggedIn={isLoggedIn} role={role} />}
+          />
           <Route path="/update" element={<UpdateStatus />} />
           <Route path="/password/forgot" element={<ForgotPassword />} />
           <Route path="/password/reset-link-sent" element={<ResetLinkSent />} />
           <Route path="/password/reset" element={<ResetPassword />} />
-          <Route path="/password/reset-success" element={<ResetPasswordSuccess />} />
+          <Route
+            path="/password/reset-success"
+            element={<ResetPasswordSuccess />}
+          />
         </Routes>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

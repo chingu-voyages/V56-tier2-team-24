@@ -11,4 +11,3 @@ export type Patient = {
     createdAt: Date;
     updatedAt: Date;
 }
-
