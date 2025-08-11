@@ -36,7 +36,7 @@ export default function Header({
       roles: ["guest", "surgeon", "admin"],
     },
     {
-      to: "/patient-info",
+      to: "/info",
       label: "Patient Information",
       roles: ["surgeon", "admin"],
     },
