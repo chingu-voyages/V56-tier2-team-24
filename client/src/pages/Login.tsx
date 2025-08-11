@@ -15,8 +15,14 @@ export default function Login({
   setRole: React.Dispatch<React.SetStateAction<Role | undefined>>;
 }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  // Demo mode configuration from env
+  const demoEmail = import.meta.env.VITE_DEMO_EMAIL || "";
+  const demoPassword = import.meta.env.VITE_DEMO_PASSWORD || "";
+  const isDemoMode = demoEmail && demoPassword;
+
+  const [email, setEmail] = useState(demoEmail);
+  const [password, setPassword] = useState(demoPassword);
   const [rememberMe, setRememberMe] = useState(Boolean);
 
   // Handles the function call to sign in
@@ -59,6 +65,12 @@ export default function Login({
           <h1 className="font-kaisei mb-12 w-full text-xl font-bold md:text-4xl">
             Log In
           </h1>
+          {isDemoMode && (
+            <div className="mb-4 w-full rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-blue-700">
+              <strong>Demo Mode:</strong> Login form pre-filled with demo
+              credentials
+            </div>
+          )}
           {isError && (
             <div className="text-red-500">Invalid email or password.</div>
           )}
