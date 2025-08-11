@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Search from "../components/Search";
 import API from "../config/apiClient";
 import { getPatients } from "../lib/api";
+import type { Patient } from "../types/Patient";
 import type { Role } from "../types/Role";
 
 interface PatientInfoDashboardProps {
@@ -14,6 +15,22 @@ export default function PatientInfoDashboard({
   role,
   isLoggedIn,
 }: PatientInfoDashboardProps) {
+  const [patients, setPatients] = useState<Patient[]>([]);
+
+  useEffect(() => {
+    const fetchPatients = async () => {
+      try {
+        const result = await getPatients();
+        const patients = result.data.patients as Patient[];
+        setPatients(patients);
+      } catch (error) {
+        console.log("Error fetching patients:", error);
+      }
+    };
+
+    fetchPatients();
+  }, []);
+
   // Don't redirect until we have a role (meaning auth check is complete)
   if (role === undefined) {
     // TODO: Add a loading state
@@ -29,8 +46,6 @@ export default function PatientInfoDashboard({
     // Redirect to login page if not admin or surgeon
     return <Navigate to="/login" replace />;
   }
-
-  const [patients, setPatients] = useState([]);
 
   const deletePatient = async (patientID: string) => {
     console.log("deleting user attempt: " + patientID);
@@ -49,29 +64,94 @@ export default function PatientInfoDashboard({
     }
   };
 
-  useEffect(() => {
-    const fetchPatients = async () => {
-      const result = await getPatients();
-      const patients = result.data.patients;
-      setPatients(patients);
-    };
-
-    fetchPatients();
-  }, []);
-
   return (
-    <section className="flex min-h-0 flex-1 flex-col px-4 py-8 md:px-8">
-      <h1 className="font-kaisei text-2xl font-bold md:text-4xl">
-        Patient Information Dashboard
-      </h1>
-      <p className="text-text mt-3 md:text-lg">
-        View and manage essential patient details before, during, and after
-        surgery. Please ensure all updates are accurate and respectful of
-        patient privacy.
-      </p>
+    <section className="flex min-h-0 flex-1 flex-col px-[50px] py-[26px]">
+      <div className="mb-10 flex flex-row justify-between">
+        <div className="min-w flex max-w-[660px] flex-col gap-[26px]">
+          <h1 className="font-kaisei text-2xl font-bold md:text-4xl">
+            Patient Information Dashboard
+          </h1>
+          <p className="text-text mt-3 md:text-lg">
+            View and manage essential patient details before, during, and after
+            surgery. Please ensure all updates are accurate and respectful of
+            patient privacy.
+          </p>
+        </div>
 
-      <div className="mt-6 flex flex-1 items-center justify-center rounded-xl border border-gray-200 p-6">
-        <p>There are no patients yet</p>
+        <div className="flex items-end">
+          <button className="bg-primary text-background inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-xl px-8 py-5 whitespace-nowrap">
+            Authorization Login
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentColor"
+            >
+              <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div className="mb-4 flex flex-row justify-between">
+        <div className="flex flex-row gap-8">
+          <button className="">All</button>
+          <button>Before Procedure</button>
+          <button>During Procedure</button>
+          <button>After Procedure</button>
+        </div>
+        <Search />
+      </div>
+
+      <div className="mt-6 flex flex-1 items-center justify-center rounded-xl border border-slate-300 bg-gray-50/30 p-6">
+        {patients.length === 0 ? (
+          <p>There are no patients yet</p>
+        ) : (
+          <div className="h-full w-full overflow-auto">
+            <table className="min-w-full rounded-2xl text-lg outline-2 outline-gray-100">
+              <thead className="bg-accent font-nunito-bold h-12 text-left">
+                <tr>
+                  <th className="pl-5" scope="col">
+                    Patient
+                  </th>
+                  <th scope="col">Street Address</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Email Address</th>
+                  <th scope="col">Medical Status</th>
+                  <th scope="col">Delete Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {patients.map((patient) => (
+                  <tr className="border-b-1 border-gray-200" key={patient._id}>
+                    <td className="px-5 py-3 pr-50">
+                      <div className="flex flex-col">
+                        <div className="font-nunito-bold">
+                          {patient.firstName} {patient.lastName}
+                        </div>
+                        <div className="text-md text-gray-500">
+                          Patient No: {patient.patientID}
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-3">{patient.streetAddress}</td>
+                    <td className="py-3 pr-15">{patient.country}</td>
+                    <td className="py-3">{patient.phoneNumber}</td>
+                    <td className="py-3">{patient.email}</td>
+                    <td className="py-3">{patient.medicalStatus}</td>
+                    <td className="py-3">
+                      <button onClick={() => deletePatient(patient.patientID)}>
+                        ...
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </section>
   );
